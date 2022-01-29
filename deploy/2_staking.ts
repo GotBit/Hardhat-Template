@@ -18,8 +18,10 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     log: true,
   })
 
-  const staking = await ethers.getContract('Staking')
-  await tokenB.connect(deployer).transfer(staking.address, 1)
+  if (hre.network.tags.dev) {
+    const staking = await ethers.getContract('Staking')
+    await tokenB.connect(deployer).transfer(staking.address, 1)
+  }
 }
 export default func
 func.tags = ['prod', 'dev']
