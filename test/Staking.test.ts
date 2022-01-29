@@ -1,7 +1,7 @@
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 import { expect } from 'chai'
 import { BigNumberish } from 'ethers'
-import { ethers, time, deployments } from 'hardhat'
+import { ethers, time } from 'hardhat'
 import { Staking, Staking__factory, Token, Token__factory } from '../typechain'
 
 async function stake(
@@ -21,26 +21,31 @@ async function stake(
 async function harvest() {}
 
 describe('Staking Contract', () => {
+  let tokenFactory: Token__factory
+  let stakingFactory: Staking__factory
+
   let tokenA: Token, tokenB: Token
   let staking: Staking
 
   let owner: SignerWithAddress, user: SignerWithAddress
 
+  let snapInit
+
   before(async () => {
     ;[owner, user] = await ethers.getSigners()
-    await deployments.fixture('Token A')
-    await deployments.fixture('Token B')
-    await deployments.fixture('Staking')
 
-    tokenA = <Token>await ethers.getContract('Token A')
-    tokenB = <Token>await ethers.getContract('Token B')
-    staking = <Staking>await ethers.getContract('Staking')
+    tokenFactory = await ethers.getContractFactory('Token')
+    tokenA = await tokenFactory.deploy()
+    tokenB = await tokenFactory.deploy()
+
+    stakingFactory = await ethers.getContractFactory('Staking')
+    staking = await stakingFactory.deploy(tokenA.address, tokenB.address, owner.address)
+
+    snapInit = await time.snapshot()
   })
 
   describe('User functions', () => {
-    it('should stake and wrire in blockchain', async () => {
-      console.log(await tokenB.balanceOf(staking.address))
-    })
+    it('should stake and write in blockchain', async () => {})
     it('should harvest collected Token B', async () => {})
     it('should unstake and harvest', async () => {})
   })

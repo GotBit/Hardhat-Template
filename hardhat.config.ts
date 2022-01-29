@@ -8,6 +8,8 @@ import 'hardhat-contract-sizer'
 import 'hardhat-deploy'
 
 import './extensions/time'
+import './extensions/bignumber'
+import './extensions/string'
 
 import secrets from './.secrets'
 import { node } from './utils/node'

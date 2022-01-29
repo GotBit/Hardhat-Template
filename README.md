@@ -11,6 +11,8 @@ You can use `tags` in deployments script and `hardhat.config.ts` to separate con
 
 Put all your secret inforamtion inside `.secrets.ts`, see example `.secrets.ts.example`
 
+For testing we dont use `hardhat-deploy` `fixtures` because for now `solidity-coverage` does not support them
+
 ## Quick Setup
 
 ```console
