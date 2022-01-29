@@ -2,7 +2,7 @@
 
 ## Desctiption
 
-Hardhat Template with TypeScript support. For the main deployment plugin, we use `hardhat-deploy` instead of the standard deployment script, because it provides many utilities, such as saving all information about contracts and automatically verifying them on the block scanner, and so on [read here](https://www.npmjs.com/package/hardhat-deplo). Also template has plugin for manipulation time on blockchain `extensions/time.ts`. And two extends for standart classes `String` and `BigNumber`.
+Hardhat Template with TypeScript support. For the main deployment plugin, we use `hardhat-deploy` instead of the standard deployment script, because it provides many utilities, such as saving all information about contracts and automatically verifying them on the block scanner, and so on [read here](https://www.npmjs.com/package/hardhat-deploy). Also template has plugin for manipulation time on blockchain `extensions/time.ts`. And two extends for standart classes `String` and `BigNumber`.
 
 After `yarn deploy --network <network>` all inforamtion abount contract saves in file `contracts.json`. You can modify path in `package.json`
 
