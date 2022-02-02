@@ -6,9 +6,6 @@ Hardhat Template with TypeScript support. For the main deployment plugin, we use
 
 After `yarn deploy --network <network>` all inforamtion abount contract saves in file `contracts.json`. You can modify path in `package.json`
 
-You can use `tags` in deployments script and `hardhat.config.ts` to separate contracts for different purpose.
-**Example:** You have on mainnet tokens and you need to write `Staking.sol`. You can add to Token deployment tag `dev`, and it will deploy only on testnet chains. And create analogue files in mainnet folder `deployments/bsc_mainnet/Token.json` with existed address and abi, and after deploying with `yarn deploy --network bsc_mainnet` generates file `contracts.json` with real token's address and abi and staking too.
-
 Put all your secret inforamtion inside `.secrets.ts`, see example `.secrets.ts.example`
 
 For testing we dont use `hardhat-deploy` `fixtures` because for now `solidity-coverage` does not support them
